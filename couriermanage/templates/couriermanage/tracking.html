@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tracking</title>
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="bs-example">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="{% url 'service-home' %}">CMS</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <div class="nav-item active">
+        <a class="nav-link" href="{% url 'main' %}">Home</a>
+      </div>
+    <div class="navbar-nav">
+        <a class="nav-link" href="{% url 'about' %}">About CMS</a>
+        {% if user.is_authenticated %}
+            <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+    <b >Services</b>
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="/tracking">Tracking</a>
+
+      <a class="dropdown-item" href="/orders">Orders</a>
+  </div>
+</div>
+        	<a class="nav-link" href="{% url 'logout' %}">Logout</a>
+
+        {% else %}
+        	<a class="nav-link" href="{% url 'service-home' %}">Login</a>
+        	<a class="nav-link" href="{% url 'register' %}">Register</a>
+        {% endif %}
+    </div>
+    </ul>
+    {% if user.is_authenticated %}
+    {% endif %}
+  </div>
+</nav>
+  </div>
+<br><br><br>
+<form class="form-inline my-2 my-lg-0" method="get">
+        <input class="form-control mr-sm-2" type="search" name="q" value="{{ request.GET.q }}" placeholder="Enter your roll number" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+
+</body>
+</html>
